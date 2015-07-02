@@ -1,7 +1,7 @@
 # Bugsnag Notifier for Craft
 ***
 
-This is basically a fork of the official (Bugsnag Laravel Package)[https://github.com/bugsnag/bugsnag-laravel].
+This is basically a fork of the official [Bugsnag Laravel Package](https://github.com/bugsnag/bugsnag-laravel).
 Thanks for the good work and I hope you guys don't mind :)
 
 The Bugsnag Notifier for the excellent [Craft CMS](https://buildwithcraft.com/) 
