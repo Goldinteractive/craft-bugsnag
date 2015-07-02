@@ -1,0 +1,21 @@
+{
+    "name": "gold/craft-bugsnag",
+    "description": "Unofficial Bugsnag notifier for Craft Cms.",
+    "homepage": "https://github.com/Goldinteractive/craft-bugsnag",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gold Interactive",
+            "email": "mail@goldinteractive.ch"
+        }
+    ],
+    "type": "craft-plugin",
+    "require": {
+        "php": ">=5.3.0",
+        "composer/installers": "~1.0",
+        "bugsnag/bugsnag": ">=2.5.0"
+    },
+    "extra": {
+        "installer-name": "bugsnag"
+    }
+}
