@@ -29,7 +29,7 @@ capturing errors from your applications.
 2. Configure your `api_key`:
 
     ```php
-    <?php # config/bugsnag.php
+    <?php # craft/config/bugsnag.php
 
     return array(
         'api_key' => 'YOUR-API-KEY-HERE'
@@ -55,5 +55,5 @@ send your own errors and exceptions or register a beforeNotifyFunction.
 craft()->bugsnag->instance()->notifyError("ErrorType", "Something bad happened here too");
 ```
 
-See the [setBeforeNotifyFunction](https://bugsnag.com/docs/notifiers/php#setbeforenotifyfunction)
+See the [Additional Configuration](https://bugsnag.com/docs/notifiers/php#additional-configuration)
 documentation on the `bugsnag-php` library for more information.
