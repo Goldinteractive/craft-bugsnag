@@ -39,14 +39,14 @@ class BugsnagPlugin extends BasePlugin {
     {
         $service = craft()->bugsnag;
 
-        Yii::app()->onException = function($exception) use ($service)
+        Yii::app()->onException = function($exceptionEvent) use ($service)
         {
-            $service->logException($exception->exception);
+            $service->logException($exceptionEvent->exception);
         };
 
-        Yii::app()->onError = function($error) use ($service)
+        Yii::app()->onError = function($errorEvent) use ($service)
         {
-            $service->logError($error->name, $error->message, ['file' => $error->file, 'line' => $error->line]);
+            $service->logError($errorEvent->code, $errorEvent->message, ['file' => $errorEvent->file, 'line' => $errorEvent->line]);
         };
     }
 
