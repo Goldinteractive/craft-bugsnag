@@ -45,6 +45,31 @@ capturing errors from your applications.
         'notify_release_stages' => ['production', 'staging']
     );
     ```
+
+## Hooks
+
+### discardBugsnagExceptionEvent($event)
+
+Give plugins a chance to discard certain types of exceptions, such as a 404.
+
+```
+/**
+ * Stop an exception event from being reported to bugsnag
+ * 
+ * @param CExeptionEvent $event
+ * @return boolean
+ */
+function discardBugsnagExceptionEvent($event)
+{
+	$exception = $event->exception;
+
+	if (/* $exception should be discarded */){
+		return true;
+	}
+}
+
+```
+
     
 ## Other
 

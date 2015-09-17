@@ -41,6 +41,13 @@ class BugsnagPlugin extends BasePlugin {
 
         Yii::app()->onException = function($exceptionEvent) use ($service)
         {
+
+            foreach (craft()->plugins->call('discardBugsnagExceptionEvent', array($exceptionEvent)) as $shouldDiscard) {
+                if ($shouldDiscard) {
+                    return;
+                }
+            }
+
             $service->logException($exceptionEvent->exception);
         };
 
