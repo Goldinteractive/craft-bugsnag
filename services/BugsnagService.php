@@ -1,9 +1,11 @@
-<?php namespace Craft;
+<?php
+
+namespace Craft;
 
 use Bugsnag_Client;
 
-class BugsnagService extends BaseApplicationComponent {
-
+class BugsnagService extends BaseApplicationComponent
+{
     /**
      * @var Bugsnag_Client
      */
@@ -21,8 +23,7 @@ class BugsnagService extends BaseApplicationComponent {
 
     public function instance()
     {
-        if ($this->instance !== null)
-        {
+        if ($this->instance !== null) {
             return $this->instance;
         }
 
@@ -42,28 +43,23 @@ class BugsnagService extends BaseApplicationComponent {
 
         if ($config->exists('notify_release_stages', 'bugsnag') && is_array($config->get('notify_release_stages',
                 'bugsnag'))
-        )
-        {
+        ) {
             $client->setNotifyReleaseStages($config->get('notify_release_stages', 'bugsnag'));
         }
 
-        if ($config->exists('endpoint', 'bugsnag'))
-        {
+        if ($config->exists('endpoint', 'bugsnag')) {
             $client->setEndpoint($config->get('endpoint', 'bugsnag'));
         }
 
-        if ($config->exists('filters', 'bugsnag') && is_array($config->get('filters', 'bugsnag')))
-        {
+        if ($config->exists('filters', 'bugsnag') && is_array($config->get('filters', 'bugsnag'))) {
             $client->setFilters($config->get('filters', 'bugsnag'));
         }
 
-        if ($config->exists('proxy', 'bugsnag') && is_array($config->get('proxy', 'bugsnag')))
-        {
+        if ($config->exists('proxy', 'bugsnag') && is_array($config->get('proxy', 'bugsnag'))) {
             $client->setProxySettings($config->get('proxy', 'bugsnag'));
         }
 
-        if (craft()->userSession->isLoggedIn())
-        {
+        if (craft()->userSession->isLoggedIn()) {
             $user = craft()->userSession->getUser();
 
             $client->setUser([
@@ -74,5 +70,4 @@ class BugsnagService extends BaseApplicationComponent {
 
         return $client;
     }
-
 }

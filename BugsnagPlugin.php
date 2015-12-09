@@ -2,8 +2,8 @@
 
 use Yii;
 
-class BugsnagPlugin extends BasePlugin {
-
+class BugsnagPlugin extends BasePlugin
+{
     public function getName()
     {
         return Craft::t('Bugsnag');
@@ -11,7 +11,7 @@ class BugsnagPlugin extends BasePlugin {
 
     public function getVersion()
     {
-        return '0.1';
+        return '1.0';
     }
 
     public function getDeveloper()
@@ -27,8 +27,7 @@ class BugsnagPlugin extends BasePlugin {
     public function init()
     {
         // Make sure the class is not loaded elsewhere.
-        if (!class_exists('Bugsnag_Client'))
-        {
+        if (!class_exists('Bugsnag_Client')) {
             require CRAFT_PLUGINS_PATH . '/bugsnag/vendor/autoload.php';
         }
 
@@ -39,8 +38,7 @@ class BugsnagPlugin extends BasePlugin {
     {
         $service = craft()->bugsnag;
 
-        Yii::app()->onException = function($exceptionEvent) use ($service)
-        {
+        Yii::app()->onException = function ($exceptionEvent) use ($service) {
 
             foreach (craft()->plugins->call('discardBugsnagExceptionEvent', array($exceptionEvent)) as $shouldDiscard) {
                 if ($shouldDiscard) {
@@ -51,10 +49,9 @@ class BugsnagPlugin extends BasePlugin {
             $service->logException($exceptionEvent->exception);
         };
 
-        Yii::app()->onError = function($errorEvent) use ($service)
-        {
-            $service->logError($errorEvent->code, $errorEvent->message, ['file' => $errorEvent->file, 'line' => $errorEvent->line]);
+        Yii::app()->onError = function ($errorEvent) use ($service) {
+            $service->logError($errorEvent->code, $errorEvent->message,
+                ['file' => $errorEvent->file, 'line' => $errorEvent->line]);
         };
     }
-
 }
