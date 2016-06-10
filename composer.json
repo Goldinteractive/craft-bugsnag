@@ -12,6 +12,6 @@
     "type": "craft-plugin",
     "require": {
         "php": ">=5.3.0",
-        "bugsnag/bugsnag": ">=2.5.0"
+        "bugsnag/bugsnag": "2.7.1"
     }
 }
