@@ -59,7 +59,7 @@ class BugsnagService extends BaseApplicationComponent
             $client->setProxySettings($config->get('proxy', 'bugsnag'));
         }
 
-        if (craft()->userSession->isLoggedIn()) {
+        if (CRAFT_ENVIRONMENT !== 'console' && craft()->userSession->isLoggedIn()) {
             $user = craft()->userSession->getUser();
 
             $client->setUser([
