@@ -10,7 +10,10 @@
         }
     ],
     "type": "craft-plugin",
-    "require": {
+    "config": {
+    	"vendor-dir": "bugsnag/vendor"
+     },
+     "require": {
         "php": ">=5.3.0",
         "bugsnag/bugsnag": "2.7.1"
     }
